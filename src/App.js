@@ -3,10 +3,10 @@ import './App.css';
 import axios from 'axios'
 import { Switch, Route, Link } from 'react-router-dom'
 import SignUp from './components/SignUp/SignUp'
-
+import List from './components/List'
 class App extends React.Component {
 componentDidMount(){
-  axios.get("http://localhost:3000/findOne/companies?name=Apple")
+  axios.get("http://192.168.125.251:3000/")
   .then(res=>{
     console.log('res',res)
   
