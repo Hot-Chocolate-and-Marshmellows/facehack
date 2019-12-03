@@ -1,15 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import { Switch, Route, Link } from 'react-router-dom'
+import SignUp from './components/SignUp/SignUp'
+
 class App extends React.Component {
 componentDidMount(){
-  axios.get("192.168.125.251:3000")
+  axios.get("http://localhost:3000/findOne/companies?name=Apple")
   .then(res=>{
-    console.log('res')
+    console.log('res',res)
+  
   })
   .catch(err=>{
     console.error('error')
+  })
+}
+
+newUser = () => {
+  const User = {
+      username: '',
+      firstName: '',
+      lastName: '',
+      city: '',
+      image: ''
+      
+  }
+  axios.post("http://192.168.125.251:3000/users", {User})
+  .then(res=>{
+      console.log('Created Users!')
+  })
+  .catch(err=>{
+      console.error('Eroor')
   })
 }
 
@@ -18,20 +39,17 @@ render (){
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     
+     <Link to="/signup">SignUp</Link>
+     <Link to="/list">List of Users</Link>
+
+<Switch>
+
+    <Route exact path="/signup" component={SignUp} />
+    <Route exact path="/list" component={List} />
+
+</Switch>
+
     </div>
   );
 }
