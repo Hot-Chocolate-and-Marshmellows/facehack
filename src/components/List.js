@@ -14,7 +14,7 @@ class List extends Component {
     getAllUsers = () => {
         console.log('hi')
         //http://192.168.125.251:3000/
-        axios.get('http://192.168.125.251:3000').then(allTheUsers=>{
+        axios.get('http://192.168.125.251:3000/users').then(allTheUsers=>{
           console.log(allTheUsers)
           this.setState({
             
@@ -24,11 +24,13 @@ class List extends Component {
     showTheUsers = () => {
         return this.state.allTheUsers.map(eachUser=> {
             return (
-                    <Link to={`/Userdetail/${eachUser_id}`}>
+                    <Link to={`/Userdetail/${eachUser.username}`}>
                     <li>
-                    <h4>{eachUsersname}</h4>
-                    <img src={eachUsersimage_url} width="200px"/>
-                    <p>{eachUserdescription}</p>
+                    <h4>{eachUser.username}</h4>
+                    <h4>{eachUser.first_name}</h4>
+                    <h4>{eachUser.last_name}</h4>
+                    <h4>{eachUser.city}</h4>
+                    
                     </li>
                     </Link>
                     )
