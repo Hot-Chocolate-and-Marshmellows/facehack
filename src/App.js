@@ -1,8 +1,21 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+class App extends React.Component {
+componentDidMount(){
+  axios.get("192.168.125.251:3000")
+  .then(res=>{
+    console.log('res')
+  })
+  .catch(err=>{
+    console.error('error')
+  })
+}
 
-function App() {
+
+render (){
+
   return (
     <div className="App">
       <header className="App-header">
@@ -21,6 +34,7 @@ function App() {
       </header>
     </div>
   );
+}
 }
 
 export default App;
