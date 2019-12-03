@@ -2,17 +2,18 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios'
+import List from './List'
 class App extends React.Component {
 componentDidMount(){
-  axios.get("192.168.125.251:3000")
-  .then(res=>{
-    console.log('res')
-  })
-  .catch(err=>{
-    console.error('error')
-  })
+//   axios.get("192.168.125.251:3000")
+//   .then(res=>{
+//     console.log('res')
+//   })
+//   .catch(err=>{
+//     console.error('error')
+//   })
+// }
 }
-
 
 render (){
 
@@ -23,6 +24,7 @@ render (){
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <List />
         <a
           className="App-link"
           href="https://reactjs.org"
