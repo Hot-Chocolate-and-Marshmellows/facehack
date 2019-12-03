@@ -14,17 +14,18 @@ class List extends Component {
     getAllUsers = () => {
         console.log('hi')
         //http://192.168.125.251:3000/
-        axios.get('http://192.168.125.251:3000/users').then(allTheUsers=>{
-          console.log(allTheUsers)
+        axios.get('http://192.168.125.251:3001/users')
+        .then(res=>{
+          console.log(res)
           this.setState({
-            
+            allTheUsers: res.data
           })
         })
     }
     showTheUsers = () => {
         return this.state.allTheUsers.map(eachUser=> {
             return (
-                    <Link to={`/Userdetail/${eachUser.username}`}>
+                    <Link to={`/user/${eachUser.username}`}>
                     <li>
                     <h4>{eachUser.username}</h4>
                     <h4>{eachUser.first_name}</h4>
@@ -41,7 +42,7 @@ class List extends Component {
         return (
             <div>
                 Users
-                {/* {this.showTheUsers()} */}
+                {this.showTheUsers()}
             </div>
         );
     }
